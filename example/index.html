@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Blueprint 3D - Example</title>
+    <title>Planeje seu Ambiente</title>
 
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/example.css" rel="stylesheet">
 
-    <!-- Make sure you've built blueprint3d.js -->
-    <!-- See README.md for details -->
+    <script src="js/three.min.js"></script>
     <script src="js/blueprint3d.js"></script>
 
     <script src="js/jquery.js"></script>
@@ -25,8 +24,11 @@
         <div class="col-xs-3 sidebar">
           <!-- Main Navigation -->
           <ul class="nav nav-sidebar">
+            <li id=""><a href="#">
+              <p align="center"><img alt="Prático Tecnologia" src="http://praticotecnologia.com.br/wp-content/uploads/2016/11/logo_tec_sombra.png" style="height: 80px;"></p>
+            </a></li>
             <li id="floorplan_tab"><a href="#">
-              Edit Floorplan
+              Editar Plano de Chão
               <span class="glyphicon glyphicon-chevron-right pull-right"></span>
             </a></li>
             <li id="design_tab"><a href="#">
@@ -34,7 +36,7 @@
               <span class="glyphicon glyphicon-chevron-right pull-right"></span>
             </a></li>
             <li id="items_tab"><a href="#">
-              Add Items
+              Adicionar Mobília
               <span class="glyphicon glyphicon-chevron-right pull-right"></span>
             </a></li>
           </ul>
@@ -47,17 +49,17 @@
               <br /><br />
               <button class="btn btn-block btn-danger" id="context-menu-delete">
                 <span class="glyphicon glyphicon-trash"></span> 
-                Delete Item
+                Deletar Item
               </button>
             <br />
             <div class="panel panel-default">
-              <div class="panel-heading">Adjust Size</div>
+              <div class="panel-heading">Ajustar Tamanho</div>
               <div class="panel-body" style="color: #333333">
 
                 <div class="form form-horizontal" class="lead">
                   <div class="form-group">
                     <label class="col-sm-5 control-label">
-                       Width
+                       Largura
                     </label>
                     <div class="col-sm-6">
                       <input type="number" class="form-control" id="item-width">
@@ -65,7 +67,7 @@
                   </div>
                   <div class="form-group">
                     <label class="col-sm-5 control-label">
-                      Depth 
+                      Profundidade 
                     </label>
                     <div class="col-sm-6">
                       <input type="number" class="form-control" id="item-depth">
@@ -73,18 +75,18 @@
                   </div>
                   <div class="form-group">
                     <label class="col-sm-5 control-label">
-                      Height
+                      Altura
                     </label>
                     <div class="col-sm-6">
                       <input type="number" class="form-control" id="item-height">
                     </div>
                   </div>
                 </div>
-                <small><span class="text-muted">Measurements in inches.</span></small>
+                <small><span class="text-muted">Medidas em Polegadas</span></small>
               </div>
             </div>
 
-            <label><input type="checkbox" id="fixed" /> Lock in place</label>
+            <label><input type="checkbox" id="fixed" /> Travar no Lugar</label>
             <br /><br />
             </div>
           </div>
@@ -92,7 +94,7 @@
           <!-- Floor textures -->
           <div id="floorTexturesDiv" style="display:none; padding: 0 20px">
             <div class="panel panel-default">
-              <div class="panel-heading">Adjust Floor</div>
+              <div class="panel-heading">Ajustar Chão</div>
               <div class="panel-body" style="color: #333333">
 
                 <div class="col-sm-6" style="padding: 3px">
@@ -107,7 +109,7 @@
           <!-- Wall Textures -->
           <div id="wallTextures" style="display:none; padding: 0 20px">
             <div class="panel panel-default">
-              <div class="panel-heading">Adjust Wall</div>
+              <div class="panel-heading">Ajustar Parede</div>
               <div class="panel-body" style="color: #333333">
                 <div class="col-sm-6" style="padding: 3px">
                   <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/marbletiles.jpg" texture-stretch="false" texture-scale="300">
@@ -137,14 +139,14 @@
 
             <div id="main-controls">
               <a href="#" class="btn btn-default btn-sm" id="new">
-                New
+                Novo Plano
               </a>
               <a href="#" class="btn btn-default btn-sm" id="saveFile">
-                Save
+                Salvar Plano
               </a>
               <a class="btn btn-sm btn-default btn-file">
                <input type="file" class="hidden-input" id="loadFile">
-               Load
+               Carregar Plano
               </a>
             </div>
 
@@ -178,7 +180,7 @@
             </div>
 
             <div id="loading-modal">
-              <h1>Loading...</h1>  
+              <h1>Carregando...</h1>  
             </div>
           </div>
 
@@ -189,23 +191,23 @@
 
               <button id="move" class="btn btn-sm btn-default">
                 <span class="glyphicon glyphicon-move"></span>
-                Move Walls
+                Mover Paredes
               </button>
               <button id="draw" class="btn btn-sm btn-default">
                 <span class="glyphicon glyphicon-pencil"></span>
-                Draw Walls
+                Desenhar Paredes
               </button>
               <button id="delete" class="btn btn-sm btn-default">
                 <span class="glyphicon glyphicon-remove"></span>
-                Delete Walls
+                Deletar Paredes
               </button>
               <span class="pull-right">
-                <button class="btn btn-primary btn-sm" id="update-floorplan">Done &raquo;</button>
+                <button class="btn btn-primary btn-sm" id="update-floorplan">Prosseguir &raquo;</button>
               </span>
 
             </div>
             <div id="draw-walls-hint">
-              Press the "Esc" key to stop drawing walls
+              Pressione "Esc" para parar de fazer paredes
             </div>
           </div>
 
